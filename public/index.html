@@ -1,5 +1,65 @@
-<html>
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chat con nodejs y socket.io</title>
+  <link rel="stylesheet" href="css/foundation.css" />
+  <script src="js/vendor/modernizr.js"></script>
+</head>
 <body>
-<p>ef</p>
+  
+  <div class="row">
+    <div id="loginChat" class="large-12 columns">
+      <form>
+        <fieldset>
+          <legend>Chatroom Login</legend>
+          <label>Escribe tu nombre
+            <input id="entradaNombre" type="text" placeholder="ola">
+          </label>
+        </fieldset>
+      </form>
+    </div>
+  </div>
+
+  <div id="ventanaChat" class="row">
+    <div class="large-12 columns panel">
+     <h1>Cool chat</h1>
+     <div id="conversation" class="callout panel conversation">
+      <ul id="mensajes"></ul>
+    </div>
+    <div class="row">
+      <div class="large-12 columns">
+        <label>Escribe texto:
+          <input id="entradaMensaje" type="text" placeholder="ola">
+        </label>
+      </div>
+    </div>      
+  </div>    
+</div>
+</div>
+
+<!-- Footer -->
+<footer class="row">
+  <div class="large-12 columns">
+    <hr />
+    <div class="row">
+      <div class="large-4 columns">
+        <p>Framework: <a target="_blank" href="http://foundation.zurb.com/">Foundation by Zurb</a></p>
+      </div>
+      <div class="large-8 columns" style="text-align:right">
+        <p><a href="https://github.com/eariassoto/PokemonChatbot">View project on Github</a></p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+<script src="/socket.io/socket.io.js"></script>
+<script src="js/foundation.min.js"></script>
+<script src="main.js"></script>
+<script>
+$(document).foundation();
+</script>
 </body>
 </html>
