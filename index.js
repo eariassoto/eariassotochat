@@ -67,5 +67,16 @@ io.on('connection', function (socket) {
     });
   });
 
+  socket.on('escribiendo', function () {
+    socket.broadcast.emit('escribiendo', {
+      usuario: socket.usuario
+    });
+  });
+
+  socket.on('detuvo escribir', function () {
+    socket.broadcast.emit('detuvo escribir', {
+      usuario: socket.usuario
+    });
+  });
 
 });

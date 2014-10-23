@@ -3,8 +3,9 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Chat con nodejs y socket.io</title>
+  <title>Chat | Probably a Geek</title>
   <link rel="stylesheet" href="css/foundation.css" />
+  <link rel="stylesheet" href="css/chat.css" />
   <script src="js/vendor/modernizr.js"></script>
 </head>
 <body>
@@ -13,9 +14,9 @@
     <div id="loginChat" class="large-12 columns">
       <form>
         <fieldset>
-          <legend>Chatroom Login</legend>
-          <label>Escribe tu nombre
-            <input id="entradaNombre" type="text" placeholder="ola">
+          <legend>Chat Login</legend>
+          <label>Escribe tu nombre:
+            <input id="entradaNombre" type="text" placeholder="">
           </label>
         </fieldset>
       </form>
@@ -24,14 +25,14 @@
 
   <div id="ventanaChat" class="row">
     <div class="large-12 columns panel">
-     <h1>Cool chat</h1>
+     <h1>Chat | Probably a Geek</h1>
      <div id="conversation" class="callout panel conversation">
-      <ul id="mensajes"></ul>
+      <ul id="mensajes" class="no-bullet"></ul>
     </div>
     <div class="row">
       <div class="large-12 columns">
         <label>Escribe texto:
-          <input id="entradaMensaje" type="text" placeholder="ola">
+          <input id="entradaMensaje" type="text" placeholder="Ponga lo que piensa, o lo que sea">
         </label>
       </div>
     </div>      
