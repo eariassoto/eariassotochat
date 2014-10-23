@@ -58,4 +58,14 @@ io.on('connection', function (socket) {
       console.log(socket.usuario + " se ha ido.");
     }
   });
+
+  socket.on('nuevo mensaje', function (data) {
+    //le enviamos a todos los clientes el mensaje
+    socket.broadcast.emit('nuevo mensaje', {
+      usuario: socket.usuario,
+      mensaje: data
+    });
+  });
+
+
 });

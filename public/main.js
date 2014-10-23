@@ -12,7 +12,7 @@ $(function() {
   var $window = $(window);
 
   var $loginChat = $('#loginChat');
-  var $ventanaChat = $('#ventanaChat');
+  var $ventanaChat = $('#ventanaChat').hide();
 
   var $mensajes = $("#mensajes");
 
@@ -23,6 +23,23 @@ $(function() {
   var usuario;
   var conectado = false;
 
+  
+   // Sends a chat message
+  function enviarMensaje () {
+    var mensaje = $entradaMensaje.val();
+    // Prevent markup from being injected into the message
+    mensaje = cleanInput(mensaje);
+    // if there is a non-empty message and a socket connection
+    if (mensaje && conectado) {
+      $entradaMensaje.val('');
+      agregarMensajeChat({
+        usuario: usuario,
+        mensaje: mensaje
+      });
+
+      socket.emit('nuevo mensaje', mensaje);
+    }
+  }
 
     // Agrega al usuario al chat
   function setUsuario () {
@@ -59,6 +76,30 @@ $(function() {
     log(mensaje);
   }
 
+
+  function agregarMensajeChat (data, options) {
+    // Don't fade the message in if there is an 'X was typing'
+    /*var $typingMessages = getTypingMessages(data);
+    options = options || {};
+    if ($typingMessages.length !== 0) {
+      options.fade = false;
+      $typingMessages.remove();
+    }
+
+    var $usernameDiv = $('<span class="username"/>')
+      .text(data.username)
+      .css('color', getUsernameColor(data.username));
+    var $messageBodyDiv = $('<span class="messageBody">')
+      .text(data.message);
+
+    var typingClass = data.typing ? 'typing' : '';*/
+    var $messageDiv = $('<li/>').append(data.usuario + ": " +data.mensaje);
+      //.addClass(typingClass)
+      //.append($usernameDiv, $messageBodyDiv);
+
+    agregarMensaje($messageDiv, options);
+  }
+
   // Cuando el server responda con 'login', imprima el mensaje de bienvenida
   socket.on('login', function (data) {
     conectado = true;
@@ -81,6 +122,10 @@ $(function() {
     agregarMensajeParticipantes(data);
   });
 
+  socket.on('nuevo mensaje', function (data) {
+    agregarMensajeChat(data);
+  });
+
   $window.keydown(function (event) {
     if (!(event.ctrlKey || event.metaKey || event.altKey)) {
       $currentInput.focus();
@@ -88,7 +133,7 @@ $(function() {
     // Cuando el usuario presione enter
     if (event.which === 13) {
       if (usuario) {
-        //sendMessage();
+        enviarMensaje();
         //socket.emit('stop typing');
         //typing = false;
       } else {
