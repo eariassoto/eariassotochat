@@ -13,7 +13,7 @@ $(function() {
 
     var $loginChat = $('#loginChat');
     var $panelConversacion = $('#conversation');
-    var $ventanaChat = $('#ventanaChat').hide();
+    var $ventanaChat = $('#ventanaChat');
 
     var $mensajes = $("#mensajes");
 
@@ -53,6 +53,8 @@ $(function() {
             $loginChat.off('click');
 
             $ventanaChat.show();
+            $ventanaChat.on('click');
+
             $currentInput = $entradaMensaje.focus();
 
             socket.emit('agregar usuario', usuario);
@@ -60,30 +62,30 @@ $(function() {
     }
 
     function agregarElemento(elemento, opciones) {
-       var $el = $(elemento);
+        var $el = $(elemento);
 
-    // Setup default opciones
-    if (!opciones) {
-      opciones = {};
-  }
-  if (typeof opciones.fade === 'undefined') {
-      opciones.fade = true;
-  }
-  if (typeof opciones.prepend === 'undefined') {
-      opciones.prepend = false;
-  }
+        // Setup default opciones
+        if (!opciones) {
+            opciones = {};
+        }
+        if (typeof opciones.fade === 'undefined') {
+            opciones.fade = true;
+        }
+        if (typeof opciones.prepend === 'undefined') {
+            opciones.prepend = false;
+        }
 
-    // Apply opciones
-    if (opciones.fade) {
-      $el.hide().fadeIn(FADE_TIME);
-  }
-  if (opciones.prepend) {
-      $mensajes.prepend($el);
-  } else {
-      $mensajes.append($el);
-  }
-  $panelConversacion[0].scrollTop = $panelConversacion[0].scrollHeight;
-}
+        // Apply opciones
+        if (opciones.fade) {
+            $el.hide().fadeIn(FADE_TIME);
+        }
+        if (opciones.prepend) {
+            $mensajes.prepend($el);
+        } else {
+            $mensajes.append($el);
+        }
+        $panelConversacion[0].scrollTop = $panelConversacion[0].scrollHeight;
+    }
 
     function escribir(mensaje, opciones) {
         var $el = $('<li class="linea log">').text(mensaje);
@@ -208,6 +210,16 @@ $(function() {
 
     socket.on('detuvo escribir', function(data) {
         quitarMensajeEscri(data);
+    });
+
+    socket.on('disconnect', function(data) {
+        $loginChat.show();
+        $loginChat.on('click');
+
+        $ventanaChat.hide();
+        $ventanaChat.off('click');
+
+        $currentInput = $entradaMensaje.focus();
     });
 
     $window.keydown(function(event) {
