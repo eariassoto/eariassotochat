@@ -1,0 +1,49 @@
+.fullWidth {
+   width: 100%;
+   margin-left: auto;
+   margin-right: auto;
+   max-width: initial;
+ }
+
+ #loginChat {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+
+    /*
+    *  Where the magic happens
+    *  Centering method from CSS Tricks
+    *  http://css-tricks.com/centering-percentage-widthheight-elements/
+    */
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+  }
+  .panel-conversacion{
+    display: block;
+    height: 80%;
+    overflow: hidden;
+    white-space: pre-line;
+    overflow-y: auto;
+    max-height:80%;
+    width:98%; 
+    background-color:white; 
+    margin-top:1%; 
+    margin-left:1%; 
+    margin-right:1%;
+  }
+
+  .panel-inputmsj{
+    width:98%; 
+    height: 10%; 
+    margin-top:1%; 
+    margin-bottom: 1%;
+    margin-left:1%; 
+    margin-right:1%;
+  }
+
+  #lab{
+    color: white;
+    font-size: 100%;
+  }

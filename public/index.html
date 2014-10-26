@@ -1,63 +1,48 @@
 <!doctype html>
-<html class="no-js" lang="en">
+<html class="no-js" lang="es">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Chat | Probably a Geek</title>
-  <link rel="stylesheet" href="css/foundation.css" />
-  <link rel="stylesheet" href="css/chat.css" />
+  <link rel="stylesheet" href="css/foundation.min.css" />
+  <link rel="stylesheet" href="css/chat.css"/>
+
   <script src="js/vendor/modernizr.js"></script>
 
   <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
 </head>
 <body>
-  
-  <div class="row">
-    <div id="loginChat" class="large-12 columns">
+
+  <div style="background-color:black; height:100%" class="fullWidth">
+
+   <div class="row">
+    <div id="loginChat" class="small-6 large-centered columns">
       <form>
         <fieldset>
-          <legend>Chat Login</legend>
-          <label>Escribe tu nombre:
-            <input id="entradaNombre" type="text" placeholder="">
-          </label>
+          <h1 class="tituloLogin show-for-large-up">Hola, ¿cómo te llamas?</h1>
+          <h3 class="tituloLogin hide-for-large-up">Hola, ¿cómo te llamas?</h3>
+          <input id="entradaNombre" type="text" placeholder="">
         </fieldset>
       </form>
     </div>
   </div>
 
-  <div id="ventanaChat" class="row">
-    <div class="large-12 columns panel">
-     <h1>Chat | Probably a Geek</h1>
-     <div id="conversation" class="callout panel conversation">
-      <ul id="mensajes" class="no-bullet"></ul>
+  <div id="ventanaChat" style="background-color:black; height:100%" class="row fullWidth">
+    <div id="conversation" class="panel-conversacion">
+      <ul style="height:50%" id="mensajes" class="no-bullet"></ul>
     </div>
-    <div class="row">
-      <div class="large-12 columns">
-        <label>Escribe texto:
-          <input id="entradaMensaje" type="text" placeholder="Ponga lo que piensa, o lo que sea">
-        </label>
-      </div>
-    </div>      
-  </div>    
-</div>
-<script type="text/javascript">
-  $("#ventanaChat").hide();
-</script>
-
-<!-- Footer -->
-<footer class="row">
-  <div class="large-12 columns">
-    <hr />
-    <div class="row">
-      <div class="large-4 columns">
-        <p>Framework: <a target="_blank" href="http://foundation.zurb.com/">Foundation by Zurb</a></p>
-      </div>
-      <div class="large-8 columns" style="text-align:right">
-        <p><a href="https://github.com/eariassoto/eariassotonodejs">View project on Github</a></p>
-      </div>
+    <div class="panel-inputmsj">
+      <label class="lab"><strong>Escribe texto:</strong>
+        <input id="entradaMensaje" type="text" placeholder="Ponga lo que piensa, o lo que sea">
+      </label>
     </div>
   </div>
-</footer>
+
+</div>
+
+<script type="text/javascript">
+$("#ventanaChat").hide();
+</script>
 
 <script src="/socket.io/socket.io.js"></script>
 <script src="js/foundation.min.js"></script>
